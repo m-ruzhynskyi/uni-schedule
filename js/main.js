@@ -9,16 +9,19 @@ const secondWeek = document.querySelector('.main__week--second')
 const changeWeekButton = document.querySelector('.button__container')
 const button = document.querySelector('.button__container__button')
 const buttonWrapper = document.querySelector('.button__wrapper')
+const svgArrow = document.querySelector('.button__container__button__svg')
 const weekNow = getWeek()
 
 function setByWeek(week) {
   if (week) {
     button.innerText = `1 week`
     buttonWrapper.style.justifyContent = ''
+    svgArrow.classList.remove('secondWeekNext')
     changeWeekButton.dataset.nextWeek = '2'
   } else {
     button.innerText = `2 week`
     buttonWrapper.style.justifyContent = 'flex-end'
+    svgArrow.classList.add('secondWeekNext')
     changeWeekButton.dataset.nextWeek = '1'
   }
 

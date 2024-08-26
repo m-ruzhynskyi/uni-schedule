@@ -74,6 +74,7 @@ button {
           font-weight: bold;
           color: var(--textButton);
           font-size: 18px;
+          cursor: pointer;
         }
 
         .button__container__button__svg {
@@ -83,12 +84,10 @@ button {
         }
 
         .secondWeekNext {
-          .button__container__button__svg {
-            rotate: 180deg;
+          rotate: 180deg;
 
-            path {
-              transform: translate(15px, 2px);
-            }
+          path {
+            transform: translate(15px, 2px);
           }
         }
       }
@@ -100,7 +99,61 @@ button {
       gap: 15px;
 
       .day {
+        max-width: 340px;
+        border-radius: 25px;
         background: var(--containerBgColor);
+        box-shadow: 0 2px 5px 0 var(--shadowColor);
+        padding: 10px 10px 0 10px;
+
+        .day__header {
+          text-align: center;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+
+        .day__item {
+          border-top: 1px solid var(--borderColor);
+        }
+
+        .day__schedule {
+          .day__item {
+            display: grid;
+            grid-template-columns: 1.7fr 3fr 1fr 1fr;
+            justify-content: space-around;
+            align-items: center;
+
+            .day__details {
+              .day__subject {
+                margin-top: 10px;
+                text-align: center;
+              }
+
+              .day__prof {
+                margin-bottom: 10px;
+                text-align: center;
+              }
+            }
+
+            .day__time-period, .day-cabs {
+              height: 100%;
+              position: relative;
+            }
+
+            .day-cabs {
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+
+          .divider {
+            border-right: 1px solid var(--borderColor);
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+          }
+        }
       }
     }
   }
@@ -108,9 +161,5 @@ button {
 }
 
 .hide {
-  display: none;
-}
-
-.day__item {
-  border: 1px solid red;
+  display: none !important;
 }
