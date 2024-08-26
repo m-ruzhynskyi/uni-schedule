@@ -9,25 +9,41 @@ const secondWeek = document.querySelector('.main__week--second')
 const changeWeekButton = document.querySelector('.button__container')
 const button = document.querySelector('.button__container__button')
 const buttonWrapper = document.querySelector('.button__wrapper')
-const svgArrow = document.querySelector('.button__container__button__svg')
 const loader = document.querySelector('.loader__wrapper')
 const main = document.querySelector('.main')
+
+let svgArrow = null
+
 const weekNow = getWeek()
 
 function setByWeek(week) {
+  if (!svgArrow) {
+    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+    svgElement.classList.add('button__container__button__svg')
+    svgElement.setAttribute("class", "button__container__button__svg");
+    svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svgElement.setAttribute("fill", "#000000");
+    svgElement.setAttribute("viewBox", "0 0 38 26");
+
+    const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    pathElement.setAttribute("d", "M5 12l7 6V13h6v-2h-6V6z");
+
+    svgElement.appendChild(pathElement);
+    changeWeekButton.append(svgElement)
+
+    svgArrow = svgElement;
+
+  }
+
   if (week) {
-    const p = document.createElement('p')
-    p.innerText = `1 week`
-    p.classList.add('button__container__button__text')
-    button.prepend(p)
+    button.innerText = `1 week`
     buttonWrapper.style.justifyContent = ''
     svgArrow.classList.remove('secondWeekNext')
     changeWeekButton.dataset.nextWeek = '2'
   } else {
-    const p = document.createElement('p')
-    p.innerText = `2 week`
-    p.classList.add('button__container__button__text')
-    button.prepend(p)
+    button.innerHTML = `2 week`
     buttonWrapper.style.justifyContent = 'flex-end'
     svgArrow.classList.add('secondWeekNext')
     changeWeekButton.dataset.nextWeek = '1'
@@ -45,10 +61,7 @@ function setByWeek(week) {
 function loadSchedule() {
   setByWeek(weekNow)
   main.classList.add('hide')
-  button.innerHTML = `<svg class="button__container__button__svg" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-             viewBox="0 0 38 26">
-          <path d="m5 12 7 6v-5h6v-2h-6V6z"/>
-        </svg>`
+
   for (let week = 0; week < 2; week++) {
     const currentWeek = schedule[week]
 
@@ -73,7 +86,7 @@ function loadSchedule() {
     week ? secondWeek.append(...weekSchedule) : firstWeek.append(...weekSchedule)
   }
 
-  if (loader) {
+  if (schedule) {
     loader.classList.add('hide')
     main.classList.remove('hide')
   }
