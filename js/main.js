@@ -6,34 +6,34 @@ import './toCapitalize.js'
 
 const firstWeek = document.querySelector('.main__week--first')
 const secondWeek = document.querySelector('.main__week--second')
-const changeWeekButton = document.querySelector('.main__button')
+const changeWeekButton = document.querySelector('.button__container')
+const button = document.querySelector('.button__container__button')
+const buttonWrapper = document.querySelector('.button__wrapper')
 const weekNow = getWeek()
 
 function setByWeek(week) {
   if (week) {
-    changeWeekButton.innerHTML = `1 week <svg class="main__button__svg" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 24 24">
-      <path d="m5 12 7 6v-5h6v-2h-6V6z"/>
-    </svg>`
-    changeWeekButton.classList.add('main__button--secondWeekNext')
-    changeWeekButton.classList.remove('main__button--firstWeekNext')
+    button.innerText = `1 week`
+    buttonWrapper.style.justifyContent = ''
+    changeWeekButton.dataset.nextWeek = '2'
   } else {
-    changeWeekButton.innerHTML = `2 week <svg class="main__button__svg" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 24 24">
-      <path d="m5 12 7 6v-5h6v-2h-6V6z"/>
-    </svg>`
-    changeWeekButton.classList.add('main__button--firstWeekNext')
-    changeWeekButton.classList.remove('main__button--secondWeekNext')
+    button.innerText = `2 week`
+    buttonWrapper.style.justifyContent = 'flex-end'
+    changeWeekButton.dataset.nextWeek = '1'
   }
 
   if (week) {
-    firstWeek.classList.remove('hide')
-    secondWeek.classList.add('hide')
-  } else {
     secondWeek.classList.remove('hide')
     firstWeek.classList.add('hide')
+  } else {
+    firstWeek.classList.remove('hide')
+    secondWeek.classList.add('hide')
   }
 }
 
 function loadSchedule() {
+  setByWeek(weekNow)
+
   for (let week = 0; week < 2; week++) {
     const currentWeek = schedule[week]
 
@@ -55,17 +55,15 @@ function loadSchedule() {
       return dayDiv
     })
 
-    week ? firstWeek.append(...weekSchedule) : secondWeek.append(...weekSchedule)
+    week ? secondWeek.append(...weekSchedule) : firstWeek.append(...weekSchedule)
   }
-
-  setByWeek(weekNow)
 }
 
 
 document.addEventListener("DOMContentLoaded", loadSchedule)
 
 changeWeekButton.addEventListener('click', () => {
-  if (changeWeekButton.classList.contains('main__button--firstWeekNext')) {
-    setByWeek(true)
-  } else setByWeek(false)
+  if (changeWeekButton.dataset.nextWeek === '2') {
+    setByWeek(false)
+  } else setByWeek(true)
 })

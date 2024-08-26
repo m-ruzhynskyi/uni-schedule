@@ -1,7 +1,116 @@
-.hide{
+@import 'variables.css';
+
+@font-face {
+  font-family: 'Baloo';
+  src: url('../assets/fonts/Baloo.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuzzyBubbles-Bold';
+  src: url("../assets/fonts/FuzzyBubbles-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuzzyBubbles-Regular';
+  src: url("../assets/fonts/FuzzyBubbles-Regular.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  scroll-behavior: smooth;
+  font-family: 'FuzzyBubbles-Regular', sans-serif;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.wrapper {
+  color: var(--textColor);
+  background: var(--bgColor);
+  padding: 25px;
+
+  .header {
+    margin-bottom: 25px;
+    user-select: none;
+
+    .header__logo {
+      font-family: 'Baloo', sans-serif;
+      font-size: 22px;
+      color: var(--logoColor);
+    }
+  }
+
+  .main {
+    .button__wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+
+      .button__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100px;
+        cursor: pointer;
+
+        .button__container__button {
+          font-family: 'FuzzyBubbles-Bold', sans-serif;
+          letter-spacing: -1px;
+          font-weight: bold;
+          color: var(--textButton);
+          font-size: 18px;
+        }
+
+        .button__container__button__svg {
+          width: 38px;
+          height: 26px;
+          fill: var(--textButton);
+        }
+
+        .secondWeekNext {
+          .button__container__button__svg {
+            rotate: 180deg;
+
+            path {
+              transform: translate(15px, 2px);
+            }
+          }
+        }
+      }
+    }
+
+    .main__week {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .day {
+        background: var(--containerBgColor);
+      }
+    }
+  }
+
+}
+
+.hide {
   display: none;
 }
 
-.day__item{
+.day__item {
   border: 1px solid red;
 }

@@ -10,16 +10,24 @@
   <title>Schedule</title>
 </head>
 <body>
-<header class="header">
-  <p class="header__logo">schedule</p>
-</header>
-<main class="main">
-  <button class="main__button">
-
-  </button>
-  <section class="main__week main__week--first"></section>
-  <section class="main__week main__week--second"></section>
-</main>
+<div class="wrapper">
+  <header class="header">
+    <p class="header__logo">schedule</p>
+  </header>
+  <main class="main">
+    <div class="button__wrapper">
+      <div class="button__container">
+        <button class="button__container__button"></button>
+        <svg class="button__container__button__svg" xmlns="http://www.w3.org/2000/svg" fill="#000000"
+             viewBox="0 0 38 26">
+          <path d="m5 12 7 6v-5h6v-2h-6V6z"/>
+        </svg>
+      </div>
+    </div>
+    <section class="main__week main__week--first"></section>
+    <section class="main__week main__week--second"></section>
+  </main>
+</div>
 </body>
 <script src="./js/main.js" type="module"></script>
 </html>
