@@ -1,4 +1,4 @@
-:root{
+:root {
   --bgColor: #F4F5F1;
   --logoColor: #4F7135;
   --textButton: #58A399;
@@ -8,4 +8,18 @@
   --borderColor: rgba(0, 0, 0, 0.25);
   --colorSpecificDate: #894949;
   --loaderColor: #58A399;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgColor: #1E1E1E;
+    --logoColor: #A6E22E;
+    --textButton: #A6E22E;
+    --containerBgColor: #2E2E2E;
+    --shadowColor: rgba(0, 0, 0, 0.75);
+    --textColor: #E6E6E6;
+    --borderColor: rgba(255, 255, 255, 0.25);
+    --colorSpecificDate: #FF6347;
+    --loaderColor: #A6E22E;
+  }
 }
