@@ -3,6 +3,7 @@ import getWeek from './getWeek.js'
 import addSubject from "./addSubject.js";
 
 import './toCapitalize.js'
+import isToday from "./isToday.js";
 
 const firstWeek = document.querySelector('.main__week--first')
 const secondWeek = document.querySelector('.main__week--second')
@@ -68,6 +69,7 @@ function loadSchedule() {
     const weekSchedule = Object.keys(currentWeek).map(day => {
       const dayDiv = document.createElement("div")
       dayDiv.classList.add('day')
+      isToday(day.toLowerCase()) && dayDiv.classList.add('today')
 
       const header = document.createElement("header")
       header.innerText = day.toCapitalize()

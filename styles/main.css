@@ -44,7 +44,6 @@ button {
 
 .wrapper {
   padding: 25px;
-  max-width: 390px;
 
   .header {
     margin-bottom: 25px;
@@ -58,6 +57,12 @@ button {
   }
 
   .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    max-width: clamp(24.375rem, 68.627vw + 7.647rem, 90rem);
+
     .button__wrapper {
       display: flex;
       align-items: center;
@@ -97,11 +102,19 @@ button {
 
     .main__week {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 15px;
 
+      .today {
+        border: 3px solid var(--todayColor);
+      }
+
       .day {
-        max-width: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 340px;
         border-radius: 25px;
         background: var(--containerBgColor);
         box-shadow: 0 2px 5px 0 var(--shadowColor);
